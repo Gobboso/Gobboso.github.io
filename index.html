@@ -718,7 +718,7 @@
     // On load: restore saved preference or default to 'es'
     (function () {
       let saved = 'en';
-      try { saved = localStorage.getItem('preferred-lang') || 'es'; } catch(_) {}
+      try { saved = localStorage.getItem('preferred-lang') || 'en'; } catch(_) {}
       applyLang(saved);
     })();
   </script>
