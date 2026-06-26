@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gabriel García — Desarrollador de Software</title>
+  <title id="page-title" data-es="Gabriel García — Desarrollador de Software" data-en="Gabriel García — Software Developer">Gabriel García — Desarrollador de Software</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@300;600;700&display=swap" rel="stylesheet" />
@@ -60,6 +60,11 @@
       text-decoration: none;
       letter-spacing: -0.3px;
     }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
     .nav-links {
       display: flex;
       gap: 28px;
@@ -72,7 +77,38 @@
       text-decoration: none;
       transition: color .15s;
     }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+    }
     .nav-links a:hover { color: var(--ink); }
+
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      border: 1px solid var(--rule);
+      border-radius: 99px;
+      padding: 2px;
+      background: var(--off);
+    }
+    .lang-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .02em;
+      color: var(--light);
+      background: transparent;
+      border: none;
+      border-radius: 99px;
+      padding: 5px 11px;
+      cursor: pointer;
+      transition: background .15s, color .15s;
+    }
+    .lang-btn:hover { color: var(--ink); }
+    .lang-btn.active {
+      background: var(--ink);
+      color: var(--white);
+    }
 
     /* ── LAYOUT ── */
     .page { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
@@ -356,65 +392,72 @@
   <nav>
     <div class="nav-inner">
       <a class="nav-logo" href="#hero">Gabriel García</a>
-      <ul class="nav-links">
-        <li><a href="#about">Sobre mí</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#experience">Experiencia</a></li>
-        <li><a href="#projects">Proyectos</a></li>
-        <li><a href="#contact">Contacto</a></li>
-      </ul>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#about" data-es="Sobre mí" data-en="About">Sobre mí</a></li>
+          <li><a href="#skills" data-es="Skills" data-en="Skills">Skills</a></li>
+          <li><a href="#experience" data-es="Experiencia" data-en="Experience">Experiencia</a></li>
+
+          <li><a href="#projects" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
+          <li><a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a></li>
+        </ul>
+        <div class="lang-switch" role="group" aria-label="Selector de idioma / Language selector">
+          <button type="button" class="lang-btn active" data-lang="es" aria-pressed="true">ES</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
     </div>
   </nav>
 
   <!-- HERO -->
   <div class="page">
     <section id="hero">
-      <div class="hero-eyebrow">Disponible para nuevas oportunidades</div>
+      <div class="hero-eyebrow" data-es="Disponible para nuevas oportunidades" data-en="Available for new opportunities">Disponible para nuevas oportunidades</div>
       <h1>Gabriel García</h1>
-      <p class="hero-desc">
+      <p class="hero-desc" data-es="Desarrollador de Software Junior especializado en backend, APIs REST e integraciones. Construyo soluciones funcionales con C++, Java, Python, PHP y Laravel." data-en="Junior Software Developer specialized in backend development, REST APIs, and integrations. I build functional solutions with C++, Java, Python, PHP, and Laravel.">
         Desarrollador de Software Junior especializado en backend, APIs REST e integraciones.
         Construyo soluciones funcionales con C++, Java, Python, PHP y Laravel.
       </p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#projects">Ver proyectos</a>
-        <a class="btn btn-outline" href="#contact">Contactar</a>
+        <a class="btn btn-primary" href="#projects" data-es="Ver proyectos" data-en="View projects">Ver proyectos</a>
+        <a class="btn btn-outline" href="#contact" data-es="Contactar" data-en="Contact">Contactar</a>
         <a class="btn btn-outline" href="https://github.com/Gobboso" target="_blank" rel="noopener">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          GitHub
+          <span data-es="Ver GitHub" data-en="View GitHub">Ver GitHub</span>
         </a>
       </div>
       <div class="hero-meta">
         <span class="meta-item">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Barranquilla, Colombia
+          <span data-es="Barranquilla, Colombia" data-en="Barranquilla, Colombia">Barranquilla, Colombia</span>
         </span>
         <span class="meta-item">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-          Corporación Universitaria Americana — Ing. Sistemas
+          <span data-es="Corporación Universitaria Americana — Ing. Sistemas" data-en="Corporación Universitaria Americana — Systems Engineering">Corporación Universitaria Americana — Ing. Sistemas</span>
         </span>
       </div>
     </section>
 
     <!-- ABOUT -->
     <section id="about" class="fade-in">
-      <p class="sec-label">Sobre mí</p>
+      <p class="sec-label" data-es="Sobre mí" data-en="About me">Sobre mí</p>
       <div class="about-grid">
         <div class="about-text">
-          <p>Soy un Desarrollador de Software Junior con experiencia en el desarrollo de soluciones y APIs REST. Trabajo con C++, C#, Java, Python y PHP, y tengo experiencia con frameworks como Laravel para aplicaciones web.</p>
-          <p>He integrado servicios externos e implementado capacidades de IA en asistentes conversacionales. Me interesa construir software que sea funcional, mantenible y resuelva problemas reales.</p>
+          <p data-es="Soy un Desarrollador de Software Junior con experiencia en el desarrollo de soluciones y APIs REST. Trabajo con C++, C#, Java, Python y PHP, y tengo experiencia con frameworks como Laravel para aplicaciones web." data-en="I'm a Junior Software Developer with experience building solutions and REST APIs. I work with C++, C#, Java, Python, and PHP, and have experience with frameworks like Laravel for web applications.">Soy un Desarrollador de Software Junior con experiencia en el desarrollo de soluciones y APIs REST. Trabajo con C++, C#, Java, Python y PHP, y tengo experiencia con frameworks como Laravel para aplicaciones web.</p>
+          <p data-es="He integrado servicios externos e implementado capacidades de IA en asistentes conversacionales. Me interesa construir software que sea funcional, mantenible y resuelva problemas reales." data-en="I've integrated external services and implemented AI capabilities in conversational assistants. I'm interested in building software that is functional, maintainable, and solves real problems.">He integrado servicios externos e implementado capacidades de IA en asistentes conversacionales. Me interesa construir software que sea funcional, mantenible y resuelva problemas reales.</p>
         </div>
         <div class="about-text">
-          <p>Me caracterizo por la comunicación efectiva, el trabajo en equipo, el aprendizaje rápido y la atención al detalle. Actualmente estudio Ingeniería de Sistemas en noveno semestre.</p>
-          <p>Hablo español e inglés, y estoy siempre buscando nuevos retos donde aportar y seguir creciendo como profesional.</p>
+          <p data-es="Me caracterizo por la comunicación efectiva, el trabajo en equipo, el aprendizaje rápido y la atención al detalle. Actualmente estudio Ingeniería de Sistemas en noveno semestre." data-en="I'm known for effective communication, teamwork, fast learning, and attention to detail. I'm currently studying Systems Engineering, in my ninth semester.">Me caracterizo por la comunicación efectiva, el trabajo en equipo, el aprendizaje rápido y la atención al detalle. Actualmente estudio Ingeniería de Sistemas en noveno semestre.</p>
+          <p data-es="Hablo español e inglés, y estoy siempre buscando nuevos retos donde aportar y seguir creciendo como profesional." data-en="I speak Spanish and English, and I'm always looking for new challenges where I can contribute and keep growing as a professional.">Hablo español e inglés, y estoy siempre buscando nuevos retos donde aportar y seguir creciendo como profesional.</p>
         </div>
       </div>
     </section>
 
     <!-- SKILLS -->
     <section id="skills" class="fade-in">
-      <p class="sec-label">Habilidades técnicas</p>
+      <p class="sec-label" data-es="Habilidades técnicas" data-en="Technical skills">Habilidades técnicas</p>
       <div class="skills-group">
-        <p class="skills-category">Lenguajes</p>
+        <p class="skills-category" data-es="Lenguajes" data-en="Languages">Lenguajes</p>
         <div class="tags">
           <span class="tag">C++</span>
           <span class="tag">C#</span>
@@ -427,7 +470,7 @@
         </div>
       </div>
       <div class="skills-group">
-        <p class="skills-category">Frameworks y herramientas</p>
+        <p class="skills-category" data-es="Frameworks y herramientas" data-en="Frameworks and tools">Frameworks y herramientas</p>
         <div class="tags">
           <span class="tag">Laravel</span>
           <span class="tag">Bootstrap 5</span>
@@ -437,44 +480,44 @@
         </div>
       </div>
       <div class="skills-group">
-        <p class="skills-category">Especialidades</p>
+        <p class="skills-category" data-es="Especialidades" data-en="Specialties">Especialidades</p>
         <div class="tags">
-          <span class="tag">Integración de servicios externos</span>
-          <span class="tag">Desarrollo backend</span>
-          <span class="tag">Diseño responsive</span>
-          <span class="tag">IA aplicada</span>
+          <span class="tag" data-es="Integración de servicios externos" data-en="External service integration">Integración de servicios externos</span>
+          <span class="tag" data-es="Desarrollo backend" data-en="Backend development">Desarrollo backend</span>
+          <span class="tag" data-es="Diseño responsive" data-en="Responsive design">Diseño responsive</span>
+          <span class="tag" data-es="IA aplicada" data-en="Applied AI">IA aplicada</span>
         </div>
       </div>
     </section>
 
     <!-- EXPERIENCE -->
     <section id="experience" class="fade-in">
-      <p class="sec-label">Experiencia laboral</p>
+      <p class="sec-label" data-es="Experiencia laboral" data-en="Work experience">Experiencia laboral</p>
       <div class="exp-item">
         <div class="exp-header">
           <div>
-            <div class="exp-role">Desarrollador Web Junior</div>
+            <div class="exp-role" data-es="Desarrollador Web Junior" data-en="Junior Web Developer">Desarrollador Web Junior</div>
             <div class="exp-company">ZAM Abogados — Centro Empresarial Las Américas</div>
           </div>
-          <span class="exp-date">Abr 2024 – Sep 2024</span>
+          <span class="exp-date" data-es="Abr 2024 – Sep 2024" data-en="Apr 2024 – Sep 2024">Abr 2024 – Sep 2024</span>
         </div>
-        <p class="exp-desc">Lideré el desarrollo integral del sitio web corporativo, evolucionando desde HTML, CSS y JavaScript puro hasta un rediseño optimizado en WordPress. Implementé diseño fully responsive con Bootstrap 5 y supervisé la gestión de hosting y el ciclo de vida completo del proyecto.</p>
+        <p class="exp-desc" data-es="Lideré el desarrollo integral del sitio web corporativo, evolucionando desde HTML, CSS y JavaScript puro hasta un rediseño optimizado en WordPress. Implementé diseño fully responsive con Bootstrap 5 y supervisé la gestión de hosting y el ciclo de vida completo del proyecto." data-en="I led the full development of the corporate website, evolving it from plain HTML, CSS, and JavaScript into an optimized WordPress redesign. I implemented fully responsive design with Bootstrap 5 and oversaw hosting management and the complete project lifecycle.">Lideré el desarrollo integral del sitio web corporativo, evolucionando desde HTML, CSS y JavaScript puro hasta un rediseño optimizado en WordPress. Implementé diseño fully responsive con Bootstrap 5 y supervisé la gestión de hosting y el ciclo de vida completo del proyecto.</p>
       </div>
       <div class="exp-item">
         <div class="exp-header">
           <div>
-            <div class="exp-role">Desarrollador Web Junior</div>
+            <div class="exp-role" data-es="Desarrollador Web Junior" data-en="Junior Web Developer">Desarrollador Web Junior</div>
             <div class="exp-company">Colviseg del Caribe — Barranquilla, Atlántico</div>
           </div>
           <span class="exp-date">2023</span>
         </div>
-        <p class="exp-desc">Desarrollé desde cero el sitio web corporativo utilizando HTML, CSS, JavaScript y Bootstrap 5. Implementé diseño responsive manual e interfaz intuitiva, gestionando todas las etapas del proyecto para garantizar rendimiento óptimo en todos los dispositivos.</p>
+        <p class="exp-desc" data-es="Desarrollé desde cero el sitio web corporativo utilizando HTML, CSS, JavaScript y Bootstrap 5. Implementé diseño responsive manual e interfaz intuitiva, gestionando todas las etapas del proyecto para garantizar rendimiento óptimo en todos los dispositivos." data-en="I built the corporate website from scratch using HTML, CSS, JavaScript, and Bootstrap 5. I implemented manual responsive design and an intuitive interface, managing every stage of the project to ensure optimal performance across all devices.">Desarrollé desde cero el sitio web corporativo utilizando HTML, CSS, JavaScript y Bootstrap 5. Implementé diseño responsive manual e interfaz intuitiva, gestionando todas las etapas del proyecto para garantizar rendimiento óptimo en todos los dispositivos.</p>
       </div>
     </section>
 
     <!-- PROJECTS -->
     <section id="projects" class="fade-in">
-      <p class="sec-label">Proyectos</p>
+      <p class="sec-label" data-es="Proyectos" data-en="Projects">Proyectos</p>
       <div class="projects-grid">
 
         <!-- FlightWiseAPI -->
@@ -486,7 +529,7 @@
             <svg class="project-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
           </div>
           <div class="project-name">FlightWiseAPI</div>
-          <div class="project-desc">API REST en ASP.NET Core (.NET 8) con Google Gemini AI y SerpAPI. El usuario escribe en lenguaje natural y el sistema busca vuelos reales con precios en USD y COP, y recomienda actividades en el destino.</div>
+          <div class="project-desc" data-es="API REST en ASP.NET Core (.NET 8) con Google Gemini AI y SerpAPI. El usuario escribe en lenguaje natural y el sistema busca vuelos reales con precios en USD y COP, y recomienda actividades en el destino." data-en="REST API built with ASP.NET Core (.NET 8) using Google Gemini AI and SerpAPI. The user writes in natural language and the system searches for real flights with prices in USD and COP, and recommends activities at the destination.">API REST en ASP.NET Core (.NET 8) con Google Gemini AI y SerpAPI. El usuario escribe en lenguaje natural y el sistema busca vuelos reales con precios en USD y COP, y recomienda actividades en el destino.</div>
           <div class="project-tags">
             <span class="project-tag">C#</span>
             <span class="project-tag">.NET 8</span>
@@ -504,7 +547,7 @@
             <svg class="project-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
           </div>
           <div class="project-name">BallDontLie API</div>
-          <div class="project-desc">API REST con FastAPI que consume datos de CS2 y NBA desde BallDontLie. Incluye operaciones async/await, validación con Pydantic, paginación por cursor, manejo de rate limit y documentación Swagger.</div>
+          <div class="project-desc" data-es="API REST con FastAPI que consume datos de CS2 y NBA desde BallDontLie. Incluye operaciones async/await, validación con Pydantic, paginación por cursor, manejo de rate limit y documentación Swagger." data-en="REST API built with FastAPI that consumes CS2 and NBA data from BallDontLie. Includes async/await operations, validation with Pydantic, cursor-based pagination, rate limit handling, and Swagger documentation.">API REST con FastAPI que consume datos de CS2 y NBA desde BallDontLie. Incluye operaciones async/await, validación con Pydantic, paginación por cursor, manejo de rate limit y documentación Swagger.</div>
           <div class="project-tags">
             <span class="project-tag">Python</span>
             <span class="project-tag">FastAPI</span>
@@ -521,8 +564,8 @@
             </div>
             <svg class="project-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
           </div>
-          <div class="project-name">App Gestión de Tareas</div>
-          <div class="project-desc">Aplicación Android en Kotlin para gestionar tareas con descripción, prioridad y fecha límite. Almacenamiento en SQLite con operaciones CRUD completas e integración con API externa de tareas.</div>
+          <div class="project-name" data-es="App Gestión de Tareas" data-en="Task Management App">App Gestión de Tareas</div>
+          <div class="project-desc" data-es="Aplicación Android en Kotlin para gestionar tareas con descripción, prioridad y fecha límite. Almacenamiento en SQLite con operaciones CRUD completas e integración con API externa de tareas." data-en="Android application built in Kotlin to manage tasks with description, priority, and due date. SQLite storage with full CRUD operations and integration with an external tasks API.">Aplicación Android en Kotlin para gestionar tareas con descripción, prioridad y fecha límite. Almacenamiento en SQLite con operaciones CRUD completas e integración con API externa de tareas.</div>
           <div class="project-tags">
             <span class="project-tag">Kotlin</span>
             <span class="project-tag">Android</span>
@@ -539,8 +582,8 @@
             </div>
             <svg class="project-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
           </div>
-          <div class="project-name">Sitio Web Colviseg del Caribe</div>
-          <div class="project-desc">Sitio web corporativo construido desde cero para una empresa de seguridad privada en Barranquilla. Diseño responsive manual con HTML, CSS, JavaScript, Bootstrap 5 y PHP.</div>
+          <div class="project-name" data-es="Sitio Web Colviseg del Caribe" data-en="Colviseg del Caribe Website">Sitio Web Colviseg del Caribe</div>
+          <div class="project-desc" data-es="Sitio web corporativo construido desde cero para una empresa de seguridad privada en Barranquilla. Diseño responsive manual con HTML, CSS, JavaScript, Bootstrap 5 y PHP." data-en="Corporate website built from scratch for a private security company in Barranquilla. Manual responsive design using HTML, CSS, JavaScript, Bootstrap 5, and PHP.">Sitio web corporativo construido desde cero para una empresa de seguridad privada en Barranquilla. Diseño responsive manual con HTML, CSS, JavaScript, Bootstrap 5 y PHP.</div>
           <div class="project-tags">
             <span class="project-tag">HTML</span>
             <span class="project-tag">CSS</span>
@@ -551,20 +594,20 @@
 
       </div>
       <p style="margin-top:16px; font-size:13px; color:var(--light);">
-        → Todos los repositorios en <a href="https://github.com/Gobboso" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none; font-weight:500;">github.com/Gobboso</a>
+        <span data-es="→ Todos los repositorios en" data-en="→ All repositories at">→ Todos los repositorios en</span> <a href="https://github.com/Gobboso" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none; font-weight:500;">github.com/Gobboso</a>
       </p>
     </section>
 
     <!-- EDUCATION -->
     <section id="education" class="fade-in">
-      <p class="sec-label">Educación</p>
+      <p class="sec-label" data-es="Educación" data-en="Education">Educación</p>
       <div class="edu-item">
-        <div class="edu-degree">Ingeniería de Sistemas</div>
+        <div class="edu-degree" data-es="Ingeniería de Sistemas" data-en="Systems Engineering">Ingeniería de Sistemas</div>
         <div class="edu-school">Corporación Universitaria Americana</div>
-        <div class="edu-year">2022 – Presente · Noveno semestre activo</div>
+        <div class="edu-year" data-es="2022 – Presente · Noveno semestre activo" data-en="2022 – Present · Currently in ninth semester">2022 – Presente · Noveno semestre activo</div>
       </div>
       <div class="edu-item">
-        <div class="edu-degree">Diploma de Bachiller · Técnico en Mantenimiento de Equipos de Cómputo</div>
+        <div class="edu-degree" data-es="Diploma de Bachiller · Técnico en Mantenimiento de Equipos de Cómputo" data-en="High School Diploma · Technician in Computer Equipment Maintenance">Diploma de Bachiller · Técnico en Mantenimiento de Equipos de Cómputo</div>
         <div class="edu-school">IED. José Eusebio Caro — SENA</div>
         <div class="edu-year">2011 – 2021</div>
       </div>
@@ -572,14 +615,14 @@
 
     <!-- CONTACT -->
     <section id="contact" class="fade-in">
-      <p class="sec-label">Contacto</p>
+      <p class="sec-label" data-es="Contacto" data-en="Contact">Contacto</p>
       <div class="contact-grid">
         <a class="contact-card" href="mailto:gabrielomar2004@hotmail.com">
           <div class="contact-icon">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
           <div>
-            <div class="contact-label">Email</div>
+            <div class="contact-label" data-es="Email" data-en="Email">Email</div>
             <div class="contact-value">gabrielomar2004@hotmail.com</div>
           </div>
         </a>
@@ -597,7 +640,7 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           </div>
           <div>
-            <div class="contact-label">Teléfono</div>
+            <div class="contact-label" data-es="Teléfono" data-en="Phone">Teléfono</div>
             <div class="contact-value">+57 (300) 546 5833</div>
           </div>
         </a>
@@ -606,7 +649,7 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <div>
-            <div class="contact-label">Ubicación</div>
+            <div class="contact-label" data-es="Ubicación" data-en="Location">Ubicación</div>
             <div class="contact-value">Barranquilla, Colombia</div>
           </div>
         </div>
@@ -618,16 +661,66 @@
   <footer>
     <div class="footer-inner">
       <span class="footer-name">Gabriel García</span>
-      <span class="footer-copy">2025 · Desarrollador de Software Junior</span>
+      <span class="footer-copy" data-es="2025 · Desarrollador de Software Junior" data-en="2025 · Junior Software Developer">2025 · Desarrollador de Software Junior</span>
     </div>
   </footer>
 
   <script>
-    // Intersection Observer for fade-in animations
+    // ── INTERSECTION OBSERVER (fade-in animations) ──
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ── LANGUAGE SWITCHER ──
+    function applyLang(lang) {
+      // Update <html> attribute
+      document.documentElement.setAttribute('lang', lang);
+      document.documentElement.setAttribute('data-lang', lang);
+
+      // Switch all elements with data-es / data-en
+      document.querySelectorAll('[data-es][data-en]').forEach(el => {
+        const text = el.getAttribute('data-' + lang);
+        if (text === null) return;
+
+        if (el.tagName === 'TITLE') {
+          // Update both element content and document.title
+          el.textContent = text;
+          document.title = text;
+        } else if (el.children.length === 0) {
+          el.textContent = text;
+        } else {
+          // Element has child nodes (e.g. SVG inside a button) — only replace text nodes
+          Array.from(el.childNodes).forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+              node.textContent = text;
+            }
+          });
+        }
+      });
+
+      // Update lang buttons active state & aria-pressed
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        const isActive = btn.getAttribute('data-lang') === lang;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+
+      // Persist choice
+      try { localStorage.setItem('preferred-lang', lang); } catch(_) {}
+    }
+
+    // Attach click listeners
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang')));
+    });
+
+    // On load: restore saved preference or default to 'es'
+    (function () {
+      let saved = 'es';
+      try { saved = localStorage.getItem('preferred-lang') || 'es'; } catch(_) {}
+      applyLang(saved);
+    })();
   </script>
 </body>
 </html>
